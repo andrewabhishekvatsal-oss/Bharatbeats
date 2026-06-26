@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BharatBeats — Mobiles, Electronics, Drones & Spare Parts Deals</title>
+<meta name="description" content="BharatBeats — Best Amazon deals on mobiles, electronics, FPV drones, drone parts, Class D amplifiers, Raspberry Pi, Arduino, motherboards and audio boards." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --orange: #FF9900;
+    --orange-dark: #e68900;
+    --navy: #131921;
+    --navy-light: #232f3e;
+    --red: #CC0C39;
+    --prime-blue: #00A8E0;
+    --text: #111;
+    --text-muted: #555;
+    --bg: #f3f3f3;
+    --card-bg: #fff;
+    --border: #ddd;
+    --radius: 10px;
+  }
+  body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); }
+
+  /* HEADER */
+  header {
+    background: var(--navy);
+    padding: 0 20px;
+    position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+  .header-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; align-items: center; gap: 16px;
+    padding: 12px 0;
+    flex-wrap: wrap;
+  }
+  .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+  .logo-icon { font-size: 26px; }
+  .logo-text { font-size: 20px; font-weight: 700; color: var(--orange); letter-spacing: -0.3px; }
+  .logo-sub { font-size: 10px; color: #aaa; letter-spacing: 1px; text-transform: uppercase; display: block; }
+  .header-links { margin-left: auto; display: flex; gap: 12px; align-items: center; }
+  .header-links a {
+    color: #ccc; font-size: 13px; text-decoration: none;
+    padding: 6px 12px; border-radius: 6px;
+    border: 0.5px solid #444;
+    transition: all 0.15s;
+  }
+  .header-links a:hover { color: var(--orange); border-color: var(--orange); }
+  .fb-link {
+    background: #1877F2 !important;
+    color: white !important;
+    border-color: #1877F2 !important;
+  }
+  .fb-link:hover { opacity: 0.9; }
+
+  /* HERO */
+  .hero {
+    background: linear-gradient(135deg, var(--navy-light) 0%, #1a252f 100%);
+    padding: 48px 20px;
+    text-align: center;
+  }
+  .hero-inner { max-width: 700px; margin: 0 auto; }
+  .hero-badge {
+    display: inline-block;
+    background: var(--orange);
+    color: var(--navy);
+    font-size: 11px; font-weight: 700;
+    padding: 4px 14px; border-radius: 20px;
+    margin-bottom: 16px; letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .hero h1 { font-size: 32px; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 10px; }
+  .hero h1 span { color: var(--orange); }
+  .hero p { color: #aaa; font-size: 15px; line-height: 1.6; margin-bottom: 24px; }
+  .hero-stats { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; }
+  .stat { text-align: center; }
+  .stat-num { font-size: 22px; font-weight: 700; color: var(--orange); }
+  .stat-label { font-size: 11px; color: #888; margin-top: 2px; }
+
+  /* FILTER BAR */
+  .filter-bar { background: #fff; border-bottom: 1px solid var(--border); padding: 0 20px; }
+  .filter-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: flex; gap: 8px; overflow-x: auto;
+    padding: 12px 0; scrollbar-width: none;
+  }
+  .filter-inner::-webkit-scrollbar { display: none; }
+  .filter-btn {
+    white-space: nowrap;
+    padding: 7px 16px; border-radius: 20px;
+    border: 1px solid var(--border);
+    background: #fff; color: var(--text-muted);
+    font-size: 13px; font-weight: 500;
+    cursor: pointer; transition: all 0.15s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--orange); color: var(--navy);
+    border-color: var(--orange); font-weight: 600;
+  }
+
+  /* MAIN CONTENT */
+  main { max-width: 1200px; margin: 0 auto; padding: 24px 20px; }
+
+  .section-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 16px; flex-wrap: wrap; gap: 8px;
+  }
+  .section-title { font-size: 18px; font-weight: 700; color: var(--text); }
+  .section-title span { color: var(--orange); }
+  .refresh-btn {
+    background: transparent; border: 1px solid var(--border);
+    border-radius: 8px; padding: 7px 14px;
+    font-size: 12px; font-weight: 500; color: var(--text-muted);
+    cursor: pointer; transition: all 0.15s; display: flex; align-items: center; gap: 6px;
+  }
+  .refresh-btn:hover { border-color: var(--orange); color: var(--orange); }
+  .refresh-btn svg { width: 14px; height: 14px; }
+
+  /* PRODUCT GRID */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+  }
+
+  .product-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: box-shadow 0.15s, transform 0.15s;
+    position: relative;
+    display: flex; flex-direction: column;
+  }
+  .product-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.12); transform: translateY(-2px); }
+
+  .badge-row { position: absolute; top: 8px; left: 8px; right: 8px; display: flex; justify-content: space-between; z-index: 2; }
+  .badge { font-size: 10px; font-weight: 700; padding: 3px 7px; border-radius: 4px; }
+  .badge-deal { background: var(--red); color: #fff; }
+  .badge-prime { background: var(--prime-blue); color: #fff; }
+  .badge-new { background: #1a8a1a; color: #fff; }
+
+  .card-img {
+    width: 100%; height: 140px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 52px; background: #f8f8f8;
+    border-bottom: 1px solid var(--border);
+  }
+  .card-body { padding: 12px; flex: 1; display: flex; flex-direction: column; }
+  .card-category { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+  .card-title { font-size: 13px; font-weight: 500; line-height: 1.4; margin-bottom: 8px; flex: 1;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .card-rating { display: flex; align-items: center; gap: 4px; margin-bottom: 8px; }
+  .stars { color: var(--orange); font-size: 12px; }
+  .rating-num { font-size: 12px; font-weight: 600; color: var(--text); }
+  .review-count { font-size: 11px; color: var(--text-muted); }
+
+  .price-section { margin-bottom: 10px; }
+  .price-current { font-size: 18px; font-weight: 700; color: var(--text); }
+  .price-row2 { display: flex; align-items: center; gap: 8px; margin-top: 2px; }
+  .price-original { font-size: 12px; color: var(--text-muted); text-decoration: line-through; }
+  .price-save { font-size: 11px; color: #1a8a1a; font-weight: 600; }
+
+  .btn-amazon {
+    display: block; width: 100%;
+    background: var(--orange);
+    color: var(--navy);
+    text-align: center;
+    padding: 9px;
+    border-radius: 8px;
+    font-size: 13px; font-weight: 600;
+    text-decoration: none;
+    transition: background 0.15s;
+    border: none; cursor: pointer;
+  }
+  .btn-amazon:hover { background: var(--orange-dark); }
+
+  /* LOADING */
+  .loading-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 14px;
+  }
+  .skeleton {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .skel-img { height: 140px; background: #eee; animation: shimmer 1.2s infinite; }
+  .skel-body { padding: 12px; }
+  .skel-line { height: 12px; background: #eee; border-radius: 4px; margin-bottom: 8px; animation: shimmer 1.2s infinite; }
+  .skel-line.short { width: 60%; }
+  .skel-line.price { width: 40%; height: 18px; }
+  .skel-btn { height: 36px; background: #eee; border-radius: 8px; animation: shimmer 1.2s infinite; }
+  @keyframes shimmer {
+    0% { opacity: 1; } 50% { opacity: 0.5; } 100% { opacity: 1; }
+  }
+
+  /* DEAL OF THE DAY */
+  .deal-banner {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 20px;
+    flex-wrap: wrap;
+  }
+  .deal-text h2 { color: var(--orange); font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+  .deal-text h3 { color: #fff; font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+  .deal-text p { color: #aaa; font-size: 13px; }
+  .deal-timer {
+    display: flex; gap: 8px; margin-left: auto;
+  }
+  .timer-box { background: var(--orange); color: var(--navy); border-radius: 6px; padding: 8px 12px; text-align: center; min-width: 52px; }
+  .timer-num { font-size: 20px; font-weight: 700; display: block; line-height: 1; }
+  .timer-label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 2px; display: block; }
+
+  /* FOOTER */
+  footer { background: var(--navy); color: #aaa; padding: 32px 20px; margin-top: 40px; }
+  .footer-inner { max-width: 1200px; margin: 0 auto; }
+  .footer-top { display: flex; gap: 40px; flex-wrap: wrap; margin-bottom: 24px; }
+  .footer-brand .logo-text { font-size: 22px; margin-bottom: 6px; display: block; }
+  .footer-brand p { font-size: 13px; color: #888; line-height: 1.6; max-width: 280px; }
+  .footer-links h4 { color: #ccc; font-size: 13px; font-weight: 600; margin-bottom: 10px; }
+  .footer-links a { display: block; color: #888; font-size: 13px; text-decoration: none; margin-bottom: 6px; }
+  .footer-links a:hover { color: var(--orange); }
+  .footer-bottom { border-top: 1px solid #333; padding-top: 16px; font-size: 11px; color: #666; line-height: 1.6; }
+
+  /* TOAST */
+  .toast {
+    position: fixed; bottom: 24px; right: 24px;
+    background: var(--navy-light); color: #fff;
+    padding: 12px 18px; border-radius: 8px;
+    font-size: 13px; border-left: 3px solid var(--orange);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+    transform: translateY(80px); opacity: 0;
+    transition: all 0.3s; z-index: 999;
+  }
+  .toast.show { transform: translateY(0); opacity: 1; }
+
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 22px; }
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .deal-timer { margin-left: 0; }
+    .header-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <span class="logo-icon">🎵</span>
+      <div>
+        <span class="logo-text">BharatBeats</span>
+        <span class="logo-sub">Deals & Reviews</span>
+      </div>
+    </a>
+    <nav class="header-links">
+      <a href="#mobiles">📱 Mobiles</a>
+      <a href="#electronics">💻 Electronics</a>
+      <a href="#accessories">🎧 Accessories</a>
+      <a href="https://www.facebook.com/bharatbeats2021" target="_blank" class="fb-link">📘 Facebook Page</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🔥 Best Amazon Deals — Updated Daily</div>
+    <h1>Best Deals on <span>Mobiles, Electronics, Drones & Parts</span></h1>
+    <p>Handpicked products across mobiles, FPV drones, drone parts, Class D amps, Raspberry Pi, Arduino, motherboards & more — all at the best Amazon prices.</p>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num" id="totalDeals">0</div><div class="stat-label">Live Deals</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Verified Links</div></div>
+      <div class="stat"><div class="stat-num">Free</div><div class="stat-label">Amazon Shipping</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="filter-inner">
+    <button class="filter-btn active" onclick="filterProducts('all', this)">🔥 All Deals</button>
+    <button class="filter-btn" onclick="filterProducts('mobiles', this)">📱 Mobiles</button>
+    <button class="filter-btn" onclick="filterProducts('laptops', this)">💻 Laptops</button>
+    <button class="filter-btn" onclick="filterProducts('audio', this)">🎧 Audio</button>
+    <button class="filter-btn" onclick="filterProducts('accessories', this)">⚡ Accessories</button>
+    <button class="filter-btn" onclick="filterProducts('smart', this)">📺 Smart Home</button>
+    <button class="filter-btn" onclick="filterProducts('cameras', this)">📷 Cameras</button>
+    <button class="filter-btn" onclick="filterProducts('spareParts', this)">🔧 Spare Parts</button>
+    <button class="filter-btn" onclick="filterProducts('raspberrypi', this)">🍓 Raspberry Pi</button>
+    <button class="filter-btn" onclick="filterProducts('arduino', this)">⚙️ Arduino & MCU</button>
+    <button class="filter-btn" onclick="filterProducts('motherboards', this)">🖥️ Motherboards</button>
+    <button class="filter-btn" onclick="filterProducts('audioboards', this)">🎛️ Audio Boards</button>
+    <button class="filter-btn" onclick="filterProducts('classd', this)">🔊 Class D Amps</button>
+    <button class="filter-btn" onclick="filterProducts('drones', this)">🚁 Drones</button>
+    <button class="filter-btn" onclick="filterProducts('fpvdrones', this)">🎯 FPV Drones</button>
+    <button class="filter-btn" onclick="filterProducts('droneparts', this)">🔩 Drone Parts</button>
+    <button class="filter-btn" onclick="filterProducts('fpvparts', this)">📡 FPV Parts</button>
+  </div>
+</div>
+
+<main>
+
+  <!-- DEAL OF THE DAY BANNER -->
+  <div class="deal-banner">
+    <div class="deal-text">
+      <h2>⚡ Deal of the Day</h2>
+      <h3>Today's Top Pick — AI Curated</h3>
+      <p>Refreshes every 24 hours with the hottest deal on Amazon</p>
+    </div>
+    <div class="deal-timer">
+      <div class="timer-box"><span class="timer-num" id="t-h">00</span><span class="timer-label">Hours</span></div>
+      <div class="timer-box"><span class="timer-num" id="t-m">00</span><span class="timer-label">Mins</span></div>
+      <div class="timer-box"><span class="timer-num" id="t-s">00</span><span class="timer-label">Secs</span></div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS SECTION -->
+  <div class="section-header">
+    <div class="section-title">🛍️ <span>Best</span> Deals Right Now</div>
+    <button class="refresh-btn" onclick="loadProducts(currentFilter)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+      Refresh Deals
+    </button>
+  </div>
+
+  <div id="productsContainer"></div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="logo-text">🎵 BharatBeats</span>
+        <p>Your trusted source for the best deals on mobiles, electronics and accessories. Follow us on Facebook for daily updates.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <a href="https://www.facebook.com/bharatbeats2021" target="_blank">📘 Facebook Page</a>
+        <a href="https://www.amazon.com/?tag=bharatbeats-20" target="_blank">🛒 Amazon.com</a>
+        <a href="#mobiles">📱 Mobile Deals</a>
+        <a href="#electronics">💻 Electronics</a>
+      </div>
+      <div class="footer-links">
+        <h4>Categories</h4>
+        <a href="#" onclick="filterProducts('mobiles')">📱 Smartphones</a>
+        <a href="#" onclick="filterProducts('spareParts')">🔧 Electronic Spare Parts</a>
+        <a href="#" onclick="filterProducts('raspberrypi')">🍓 Raspberry Pi & SBC</a>
+        <a href="#" onclick="filterProducts('arduino')">⚙️ Arduino & MCU</a>
+        <a href="#" onclick="filterProducts('motherboards')">🖥️ Motherboards & PC Parts</a>
+        <a href="#" onclick="filterProducts('audioboards')">🎛️ Audio Boards & DAC</a>
+        <a href="#" onclick="filterProducts('classd')">🔊 Class D Amplifiers</a>
+        <a href="#" onclick="filterProducts('drones')">🚁 Drones & Quadcopters</a>
+        <a href="#" onclick="filterProducts('fpvdrones')">🎯 FPV Drones & Goggles</a>
+        <a href="#" onclick="filterProducts('droneparts')">🔩 Drone Parts</a>
+        <a href="#" onclick="filterProducts('fpvparts')">📡 FPV Electronics</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <strong style="color:#ccc">Affiliate Disclosure:</strong> BharatBeats is a participant in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com. As an Amazon Associate, we earn from qualifying purchases. Prices and availability are subject to change. Last updated: <span id="lastUpdated"></span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const ASSOCIATE_TAG = 'bharatbeats-20';
+const FB_PAGE = 'https://www.facebook.com/bharatbeats2021';
+let currentFilter = 'all';
+let allProducts = [];
+
+const CATEGORIES = {
+  mobiles: { label: 'Mobiles & Smartphones', emoji: '📱', keywords: 'smartphone, iPhone, Samsung Galaxy, Pixel, OnePlus, Motorola, budget phone, 5G phone' },
+  laptops: { label: 'Laptops & Tablets', emoji: '💻', keywords: 'laptop, MacBook, Dell, HP, Lenovo, iPad, Android tablet, Chromebook, gaming laptop' },
+  audio: { label: 'Audio & Headphones', emoji: '🎧', keywords: 'AirPods, earbuds, headphones, Bluetooth speaker, Sony WH, Bose, JBL, noise cancelling' },
+  accessories: { label: 'Accessories & Cables', emoji: '⚡', keywords: 'USB-C charger, power bank, phone case, screen protector, fast charger, MagSafe, lightning cable' },
+  smart: { label: 'Smart Home & TV', emoji: '📺', keywords: 'smart TV, Fire TV Stick, Echo Dot, Ring doorbell, smart bulb, Alexa, Google Nest, 4K TV' },
+  cameras: { label: 'Cameras & Photography', emoji: '📷', keywords: 'digital camera, action camera, GoPro, mirrorless camera, webcam, ring light, tripod, lens' },
+  spareParts: { label: 'Electronic Spare Parts', emoji: '🔧', keywords: 'DC-DC converter, voltage regulator module, relay module, MOSFET driver, capacitor kit, resistor kit, soldering kit, breadboard, jumper wires, heat sink, transistor, diode kit, LCD display module, OLED display, servo motor, stepper motor driver' },
+  raspberrypi: { label: 'Raspberry Pi & SBC', emoji: '🍓', keywords: 'Raspberry Pi 5, Raspberry Pi 4 Model B, Raspberry Pi Zero 2W, Raspberry Pi Pico W, Raspberry Pi camera module, Raspberry Pi HAT, SSD for Pi, Pi cooling fan, Pi case, Orange Pi, Rock Pi, Banana Pi, single board computer' },
+  arduino: { label: 'Arduino & Microcontrollers', emoji: '⚙️', keywords: 'Arduino Uno R3, Arduino Nano, Arduino Mega, ESP32, ESP8266, STM32, ATmega328, NodeMCU, Arduino starter kit, Arduino sensor kit, PIC microcontroller, ATTINY85, Teensy, Arduino shield, FPGA development board' },
+  motherboards: { label: 'Motherboards & PC Parts', emoji: '🖥️', keywords: 'ATX motherboard, Mini-ITX motherboard, AMD B650, Intel Z790, micro ATX board, server motherboard, GPU graphics card, RAM DDR5, NVMe SSD, CPU cooler, PC power supply, SATA cable, M.2 SSD, laptop motherboard replacement' },
+  audioboards: { label: 'Audio Boards & DAC', emoji: '🎛️', keywords: 'audio amplifier board, DAC converter, PAM8403 amplifier, TDA7498 amplifier, Bluetooth audio receiver module, I2S audio board, PCM5102 DAC, TPA3116 amplifier board, audio DSP processor, audio mixer board, USB audio card, HiFi DAC, op-amp audio board, digital audio decoder' },
+  classd: { label: 'Class D Amplifiers', emoji: '🔊', keywords: 'Class D amplifier board, TPA3116D2 amplifier, TPA3255 amplifier, MA12070 amplifier, IRS2092 Class D, TDA8954 amplifier, NCP2820 Class D, mono Class D amp board, stereo Class D amp, subwoofer Class D amplifier, 100W Class D, 200W Class D, 500W Class D, Class D amp kit, switching amplifier module, digital amplifier board, PFFB Class D, GaN Class D amplifier' },
+  drones: { label: 'Drones & Quadcopters', emoji: '🚁', keywords: 'DJI Mini 4 Pro, DJI Air 3, DJI Mavic 3, Autel EVO Lite, Holy Stone drone, Potensic drone, beginner drone with camera, GPS drone, foldable drone, 4K camera drone, racing drone RTF, long range drone, drone with obstacle avoidance, mini drone for kids, professional camera drone' },
+  fpvdrones: { label: 'FPV Drones & Goggles', emoji: '🎯', keywords: 'FPV racing drone, DJI FPV combo, Walksnail Avatar, BetaFPV Cetus Pro, EMAX Tinyhawk, Iflight Nazgul, Geprc Mark, freestyle FPV drone, 5 inch FPV quad, 3 inch FPV, toothpick FPV, DJI O3 Air Unit, FPV goggles, DJI Goggles 2, Skyzone goggles, Fatshark goggles, FPV simulator' },
+  droneparts: { label: 'Drone Parts & Components', emoji: '🔩', keywords: 'drone propellers, brushless motor 2306, drone ESC 30x30, flight controller F7, drone frame 5 inch, LiPo battery 4S, drone battery 6S, drone motor T-Motor, iFlight motor, propeller guard, drone arm replacement, DJI Mini spare parts, drone landing gear, vibration damper, drone battery charger, LiPo balance charger, XT60 connector, battery strap' },
+  fpvparts: { label: 'FPV Parts & Electronics', emoji: '📡', keywords: 'FPV camera Runcam, Caddx FPV camera, video transmitter VTX, FPV antenna, receiver Crossfire, ExpressLRS receiver, ELRS transmitter, RC transmitter RadioMaster, FrSky Taranis, Betaflight FC, SpeedyBee F405, stack ESC FC, DSHOT ESC, FPV OSD, GPS module drone, telemetry module, RC receiver SBUS, FPV patch antenna, linear antenna, video receiver diversity' }
+};
+
+function buildLink(asin) {
+  return `https://www.amazon.com/dp/${asin}?tag=${ASSOCIATE_TAG}&linkCode=ogi&th=1&psc=1`;
+}
+
+function starHTML(rating) {
+  const full = Math.floor(rating);
+  const half = (rating % 1) >= 0.5;
+  let s = '★'.repeat(full);
+  if (half) s += '½';
+  s += '☆'.repeat(5 - full - (half ? 1 : 0));
+  return s;
+}
+
+function showSkeleton(count = 8) {
+  const container = document.getElementById('productsContainer');
+  let html = '<div class="loading-grid">';
+  for (let i = 0; i < count; i++) {
+    html += `<div class="skeleton">
+      <div class="skel-img"></div>
+      <div class="skel-body">
+        <div class="skel-line"></div>
+        <div class="skel-line short"></div>
+        <div class="skel-line price"></div>
+        <div class="skel-btn"></div>
+      </div>
+    </div>`;
+  }
+  html += '</div>';
+  container.innerHTML = html;
+}
+
+function renderProducts(products) {
+  const container = document.getElementById('productsContainer');
+  if (!products.length) {
+    container.innerHTML = '<div style="text-align:center;padding:40px;color:#888">No deals found. Try another category.</div>';
+    return;
+  }
+  let html = '<div class="products-grid">';
+  products.forEach(p => {
+    const link = buildLink(p.asin);
+    const discount = p.mrp ? Math.round((1 - p.price / p.mrp) * 100) : 0;
+    const saving = p.mrp ? Math.round(p.mrp - p.price) : 0;
+    const cat = CATEGORIES[p.category] || { emoji: '🛒', label: 'Electronics' };
+    html += `
+    <div class="product-card" data-category="${p.category}">
+      <div class="badge-row">
+        ${discount > 0 ? `<span class="badge badge-deal">-${discount}%</span>` : '<span></span>'}
+        ${p.prime ? '<span class="badge badge-prime">prime</span>' : (p.isNew ? '<span class="badge badge-new">NEW</span>' : '<span></span>')}
+      </div>
+      <div class="card-img">${p.emoji || cat.emoji}</div>
+      <div class="card-body">
+        <div class="card-category">${cat.label}</div>
+        <div class="card-title">${p.title}</div>
+        <div class="card-rating">
+          <span class="stars">${starHTML(p.rating)}</span>
+          <span class="rating-num">${p.rating.toFixed(1)}</span>
+          <span class="review-count">(${p.reviews.toLocaleString()})</span>
+        </div>
+        <div class="price-section">
+          <div class="price-current">$${p.price.toFixed(2)}</div>
+          ${p.mrp ? `<div class="price-row2">
+            <span class="price-original">$${p.mrp.toFixed(2)}</span>
+            ${saving > 0 ? `<span class="price-save">Save $${saving.toFixed(2)}</span>` : ''}
+          </div>` : ''}
+        </div>
+        <a href="${link}" target="_blank" rel="nofollow sponsored" class="btn-amazon">View on Amazon →</a>
+      </div>
+    </div>`;
+  });
+  html += '</div>';
+  container.innerHTML = html;
+  document.getElementById('totalDeals').textContent = products.length;
+}
+
+const PRODUCT_DATA = [
+  // MOBILES
+  { title: 'Apple iPhone 15 128GB Black Unlocked Smartphone', asin: 'B0CHX1W1XY', category: 'mobiles', price: 699.00, mrp: 799.00, rating: 4.7, reviews: 42300, prime: true, isNew: false, emoji: '📱' },
+  { title: 'Samsung Galaxy S24 256GB Phantom Black 5G Phone', asin: 'B0CMDWC436', category: 'mobiles', price: 649.99, mrp: 799.99, rating: 4.6, reviews: 28700, prime: true, isNew: false, emoji: '📱' },
+  { title: 'Google Pixel 8a 128GB Obsidian Android Smartphone', asin: 'B0CYN7JKQM', category: 'mobiles', price: 499.00, mrp: 549.00, rating: 4.5, reviews: 15600, prime: true, isNew: true, emoji: '📱' },
+  { title: 'Motorola Moto G 5G 2024 64GB Ink Blue Unlocked', asin: 'B0CQRN73BW', category: 'mobiles', price: 149.99, mrp: 199.99, rating: 4.3, reviews: 8900, prime: true, isNew: false, emoji: '📱' },
+  // LAPTOPS
+  { title: 'Apple MacBook Air 13-inch M3 Chip 8GB 256GB 2024', asin: 'B0CXVQPVNK', category: 'laptops', price: 1099.00, mrp: 1299.00, rating: 4.8, reviews: 19800, prime: true, isNew: true, emoji: '💻' },
+  { title: 'Dell Inspiron 15 3000 Intel i5 16GB RAM 512GB SSD', asin: 'B0BQTD8JZK', category: 'laptops', price: 549.99, mrp: 699.99, rating: 4.4, reviews: 12400, prime: true, isNew: false, emoji: '💻' },
+  { title: 'Lenovo IdeaPad Flex 5 14 AMD Ryzen 5 8GB 256GB', asin: 'B0BDQD8H3L', category: 'laptops', price: 479.00, mrp: 599.00, rating: 4.3, reviews: 9700, prime: true, isNew: false, emoji: '💻' },
+  { title: 'HP Chromebook 14 Intel N200 4GB 64GB Chrome OS', asin: 'B0CF4Y8VQZ', category: 'laptops', price: 219.00, mrp: 279.00, rating: 4.2, reviews: 6300, prime: true, isNew: false, emoji: '💻' },
+  // AUDIO
+  { title: 'Apple AirPods Pro 2nd Gen USB-C Active Noise Cancelling', asin: 'B0D1XD1ZV3', category: 'audio', price: 189.00, mrp: 249.00, rating: 4.8, reviews: 87600, prime: true, isNew: false, emoji: '🎧' },
+  { title: 'Sony WH-1000XM5 Wireless Noise Cancelling Headphones', asin: 'B09XS7JWHH', category: 'audio', price: 279.99, mrp: 399.99, rating: 4.7, reviews: 54300, prime: true, isNew: false, emoji: '🎧' },
+  { title: 'JBL Tune 770NC Wireless Over-Ear Noise Cancelling', asin: 'B0CDWQ57GR', category: 'audio', price: 79.95, mrp: 129.95, rating: 4.4, reviews: 18200, prime: true, isNew: false, emoji: '🎧' },
+  { title: 'Anker Soundcore Space A40 Wireless Earbuds ANC', asin: 'B09XLHBD5J', category: 'audio', price: 49.99, mrp: 79.99, rating: 4.5, reviews: 32100, prime: true, isNew: false, emoji: '🎧' },
+  // ACCESSORIES
+  { title: 'Anker 100W USB C Charger 4-Port GaN Fast Charger', asin: 'B09W2PNKGM', category: 'accessories', price: 35.99, mrp: 55.99, rating: 4.7, reviews: 28900, prime: true, isNew: false, emoji: '⚡' },
+  { title: 'Anker PowerCore 26800mAh Portable Charger Power Bank', asin: 'B01JIWQPMW', category: 'accessories', price: 55.99, mrp: 75.99, rating: 4.6, reviews: 41200, prime: true, isNew: false, emoji: '🔋' },
+  { title: 'ESR HaloLock MagSafe Compatible iPhone 15 Case Clear', asin: 'B0CF14ZR9Q', category: 'accessories', price: 19.99, mrp: 29.99, rating: 4.4, reviews: 7800, prime: true, isNew: true, emoji: '📱' },
+  { title: 'Belkin BoostCharge USB-C to USB-C Cable 6ft 240W', asin: 'B0B3WGNPJH', category: 'accessories', price: 24.99, mrp: 34.99, rating: 4.6, reviews: 11300, prime: true, isNew: false, emoji: '🔌' },
+  // SMART HOME
+  { title: 'Amazon Fire TV Stick 4K Max 2nd Gen Wi-Fi 6E', asin: 'B0BP9SNVH9', category: 'smart', price: 39.99, mrp: 59.99, rating: 4.6, reviews: 63400, prime: true, isNew: false, emoji: '📺' },
+  { title: 'Echo Dot 5th Gen Smart Speaker with Alexa 2023', asin: 'B09B8YWXDF', category: 'smart', price: 29.99, mrp: 49.99, rating: 4.6, reviews: 98700, prime: true, isNew: false, emoji: '🔊' },
+  { title: 'Ring Video Doorbell 4 HD Video 1080p Color Night Vision', asin: 'B08N5NQ869', category: 'smart', price: 99.99, mrp: 149.99, rating: 4.5, reviews: 34500, prime: true, isNew: false, emoji: '🔔' },
+  { title: 'Kasa Smart Plug Ultra Mini 15A Wi-Fi Outlet 4-Pack', asin: 'B07RCNB2L3', category: 'smart', price: 22.99, mrp: 34.99, rating: 4.7, reviews: 72100, prime: true, isNew: false, emoji: '🏠' },
+  // CAMERAS
+  { title: 'GoPro HERO12 Black Waterproof Action Camera 5.3K', asin: 'B0CDP7XTPG', category: 'cameras', price: 299.99, mrp: 399.99, rating: 4.6, reviews: 22800, prime: true, isNew: false, emoji: '📷' },
+  { title: 'Sony ZV-E10 II Mirrorless Interchangeable Lens Camera', asin: 'B0CZDKF54B', category: 'cameras', price: 749.99, mrp: 899.99, rating: 4.7, reviews: 8400, prime: true, isNew: true, emoji: '📷' },
+  { title: 'Logitech C920x HD Pro Webcam 1080p 30fps USB', asin: 'B085TFF7M1', category: 'cameras', price: 59.99, mrp: 99.99, rating: 4.6, reviews: 47300, prime: true, isNew: false, emoji: '📹' },
+  { title: 'Neewer 10 inch LED Ring Light with Stand Phone Holder', asin: 'B01N5IK20O', category: 'cameras', price: 35.99, mrp: 55.99, rating: 4.4, reviews: 19600, prime: true, isNew: false, emoji: '💡' },
+  // SPARE PARTS
+  { title: 'ELEGOO Electronics Component Kit Resistors Capacitors 480pcs', asin: 'B01ERPXFZK', category: 'spareParts', price: 16.99, mrp: 24.99, rating: 4.6, reviews: 18900, prime: true, isNew: false, emoji: '🔧' },
+  { title: 'LM2596 DC-DC Buck Converter Step Down Module 10 Pack', asin: 'B07VVXF7YX', category: 'spareParts', price: 12.99, mrp: 19.99, rating: 4.4, reviews: 7600, prime: true, isNew: false, emoji: '⚡' },
+  { title: 'SunFounder Breadboard 830 Points with 140pcs Jumper Wires', asin: 'B082KBF7MM', category: 'spareParts', price: 14.99, mrp: 19.99, rating: 4.7, reviews: 12300, prime: true, isNew: false, emoji: '🔌' },
+  { title: '5V 2-Channel Relay Module with Optocoupler for Arduino', asin: 'B00E0NTPP4', category: 'spareParts', price: 6.99, mrp: 11.99, rating: 4.4, reviews: 9800, prime: true, isNew: false, emoji: '🔧' },
+  { title: 'OLED Display Module 0.96 inch I2C 128x64 SSD1306 Blue', asin: 'B01L9GC470', category: 'spareParts', price: 8.99, mrp: 13.99, rating: 4.5, reviews: 11200, prime: false, isNew: false, emoji: '📟' },
+  // RASPBERRY PI
+  { title: 'Raspberry Pi 5 8GB RAM Single Board Computer 2023', asin: 'B0CRSNCJ6Y', category: 'raspberrypi', price: 80.00, mrp: 95.00, rating: 4.8, reviews: 6700, prime: true, isNew: true, emoji: '🍓' },
+  { title: 'Raspberry Pi 4 Model B 4GB RAM ARM Cortex A72', asin: 'B07TC2BK1X', category: 'raspberrypi', price: 55.00, mrp: 65.00, rating: 4.7, reviews: 23400, prime: true, isNew: false, emoji: '🍓' },
+  { title: 'Raspberry Pi Zero 2W Quad Core 512MB RAM WiFi BT', asin: 'B09LH5SBPS', category: 'raspberrypi', price: 15.00, mrp: 20.00, rating: 4.6, reviews: 8900, prime: false, isNew: false, emoji: '🍓' },
+  { title: 'Raspberry Pi Pico W with WiFi RP2040 Microcontroller', asin: 'B0BQKYL1SN', category: 'raspberrypi', price: 7.99, mrp: 12.00, rating: 4.7, reviews: 14300, prime: true, isNew: false, emoji: '🍓' },
+  { title: 'CanaKit Raspberry Pi 5 Starter Kit with Case Fan Power', asin: 'B0CT8KR1KV', category: 'raspberrypi', price: 119.99, mrp: 149.99, rating: 4.8, reviews: 3200, prime: true, isNew: true, emoji: '🍓' },
+  // ARDUINO
+  { title: 'Arduino UNO R3 Official Board ATmega328P USB', asin: 'B008GRTSV6', category: 'arduino', price: 27.60, mrp: 35.00, rating: 4.8, reviews: 31200, prime: true, isNew: false, emoji: '⚙️' },
+  { title: 'ESP32 Development Board 38Pin WiFi Bluetooth Dual Core', asin: 'B08D5ZD528', category: 'arduino', price: 10.99, mrp: 16.99, rating: 4.5, reviews: 17800, prime: true, isNew: false, emoji: '📡' },
+  { title: 'ELEGOO Mega 2560 R3 Board ATmega2560 Arduino Compatible', asin: 'B01H4ZLZLQ', category: 'arduino', price: 16.99, mrp: 24.99, rating: 4.7, reviews: 22100, prime: true, isNew: false, emoji: '⚙️' },
+  { title: 'NodeMCU ESP8266 WiFi Development Board V3 Lua CP2102', asin: 'B081CSJV2V', category: 'arduino', price: 8.99, mrp: 14.99, rating: 4.4, reviews: 9600, prime: true, isNew: false, emoji: '📡' },
+  { title: 'ELEGOO Arduino Uno R3 Starter Kit 63 Item Complete Set', asin: 'B01D8KOZF4', category: 'arduino', price: 37.99, mrp: 49.99, rating: 4.7, reviews: 43800, prime: true, isNew: false, emoji: '⚙️' },
+  // MOTHERBOARDS
+  { title: 'ASUS ROG STRIX B650E-F Gaming WiFi AMD AM5 ATX Board', asin: 'B0BHLWR99L', category: 'motherboards', price: 229.99, mrp: 299.99, rating: 4.7, reviews: 4300, prime: true, isNew: false, emoji: '🖥️' },
+  { title: 'MSI PRO B760M-A WiFi DDR5 Intel LGA 1700 Micro ATX', asin: 'B0BSVHXCZH', category: 'motherboards', price: 139.99, mrp: 179.99, rating: 4.6, reviews: 3800, prime: true, isNew: false, emoji: '🖥️' },
+  { title: 'Crucial RAM 32GB DDR5 5600MHz Desktop Memory CT32G56C46U5', asin: 'B0BN2N3KQP', category: 'motherboards', price: 64.99, mrp: 89.99, rating: 4.7, reviews: 8700, prime: true, isNew: false, emoji: '💾' },
+  { title: 'Samsung 990 Pro 2TB NVMe M.2 SSD PCIe 4.0 7450MB/s', asin: 'B0BHJJ9Y77', category: 'motherboards', price: 149.99, mrp: 199.99, rating: 4.8, reviews: 16400, prime: true, isNew: false, emoji: '💽' },
+  { title: 'NZXT Kraken 240 RGB AIO Liquid Cooler 240mm CPU', asin: 'B0B8QHV7XV', category: 'motherboards', price: 99.99, mrp: 139.99, rating: 4.5, reviews: 6200, prime: true, isNew: false, emoji: '🖥️' },
+  // AUDIO BOARDS
+  { title: 'Sure Electronics 2x100W TPA3116D2 Class D Amplifier Board', asin: 'B0087ZFTZQ', category: 'audioboards', price: 29.99, mrp: 44.99, rating: 4.4, reviews: 3200, prime: false, isNew: false, emoji: '🎛️' },
+  { title: 'HiFiBerry DAC+ Pro High Res Audio Raspberry Pi HAT', asin: 'B00LZAS6GU', category: 'audioboards', price: 39.95, mrp: 49.95, rating: 4.5, reviews: 2800, prime: false, isNew: false, emoji: '🎛️' },
+  { title: 'PCM5102 DAC Decoder I2S 32Bit 384kHz HiFi Audio Module', asin: 'B07W7QQM8H', category: 'audioboards', price: 9.99, mrp: 14.99, rating: 4.3, reviews: 4600, prime: true, isNew: false, emoji: '🎵' },
+  { title: 'Fosi Audio BT20A Bluetooth 5.0 Stereo Amplifier 100W', asin: 'B07BQDXRPB', category: 'audioboards', price: 49.99, mrp: 69.99, rating: 4.6, reviews: 18700, prime: true, isNew: false, emoji: '🔊' },
+  { title: 'PAM8403 Mini Digital Amplifier Board 2x3W Class D USB', asin: 'B00LODGV64', category: 'audioboards', price: 5.99, mrp: 9.99, rating: 4.3, reviews: 6100, prime: true, isNew: false, emoji: '🎛️' },
+  // CLASS D
+  { title: 'Fosi Audio V3 Mono Channel Amplifier TPA3255 300W Class D', asin: 'B0C1JQZJWK', category: 'classd', price: 59.99, mrp: 79.99, rating: 4.7, reviews: 4800, prime: true, isNew: true, emoji: '🔊' },
+  { title: 'AIYIMA A07 TPA3255 Stereo Power Amplifier 300Wx2 Class D', asin: 'B09LNJM38Z', category: 'classd', price: 49.99, mrp: 69.99, rating: 4.6, reviews: 7300, prime: true, isNew: false, emoji: '🔊' },
+  { title: 'Nobsound NS-10G Mini Bluetooth 5.0 Class D Amplifier 50W', asin: 'B07MXXBWPG', category: 'classd', price: 35.99, mrp: 49.99, rating: 4.4, reviews: 9100, prime: true, isNew: false, emoji: '🔊' },
+  { title: 'IRS2092 500W Mono Channel Class D Amplifier Board Kit', asin: 'B07Q2TGMJP', category: 'classd', price: 39.99, mrp: 59.99, rating: 4.2, reviews: 1800, prime: false, isNew: false, emoji: '⚡' },
+  { title: 'Fosi Audio BT30D Bluetooth 5.0 2.1 Channel Class D Amp', asin: 'B082WNMJLT', category: 'classd', price: 45.99, mrp: 65.99, rating: 4.5, reviews: 12400, prime: true, isNew: false, emoji: '🔊' },
+  // DRONES
+  { title: 'DJI Mini 4 Pro Drone with RC 2 Controller 4K HDR Video', asin: 'B0CGZXZNZ4', category: 'drones', price: 759.00, mrp: 959.00, rating: 4.8, reviews: 8700, prime: true, isNew: true, emoji: '🚁' },
+  { title: 'DJI Air 3 Fly More Combo RC-N2 Dual Camera Drone 4K', asin: 'B0CC7XVYK1', category: 'drones', price: 1149.00, mrp: 1399.00, rating: 4.7, reviews: 5600, prime: true, isNew: false, emoji: '🚁' },
+  { title: 'Holy Stone HS720E 4K EIS Anti-Shake GPS Drone Foldable', asin: 'B08F6QVB8K', category: 'drones', price: 189.99, mrp: 249.99, rating: 4.3, reviews: 14200, prime: true, isNew: false, emoji: '🚁' },
+  { title: 'Potensic ATOM SE GPS Drone 4K Camera Brushless Motor', asin: 'B09V4BFNMK', category: 'drones', price: 159.99, mrp: 219.99, rating: 4.4, reviews: 6800, prime: true, isNew: false, emoji: '🚁' },
+  { title: 'DJI Mini 3 Drone Only Lightweight Under 249g 4K Video', asin: 'B0BFVJX3CX', category: 'drones', price: 469.00, mrp: 559.00, rating: 4.7, reviews: 9300, prime: true, isNew: false, emoji: '🚁' },
+  // FPV DRONES
+  { title: 'DJI Avata 2 FPV Drone Fly More Combo 4K Stabilization', asin: 'B0CX4G5XF7', category: 'fpvdrones', price: 989.00, mrp: 1199.00, rating: 4.8, reviews: 3400, prime: true, isNew: true, emoji: '🎯' },
+  { title: 'BetaFPV Cetus X FPV Racing Drone Kit Brushless 3 Mode', asin: 'B09N7P55TS', category: 'fpvdrones', price: 149.99, mrp: 199.99, rating: 4.4, reviews: 2100, prime: true, isNew: false, emoji: '🎯' },
+  { title: 'EMAX Tinyhawk 3 Plus RTF FPV Racing Drone with Goggles', asin: 'B0BPLSGW44', category: 'fpvdrones', price: 169.99, mrp: 229.99, rating: 4.5, reviews: 1800, prime: false, isNew: false, emoji: '🎯' },
+  { title: 'Skyzone Cobra X V4 FPV Goggles 1280x960 HDMI 5.8GHz', asin: 'B09DKGXPCB', category: 'fpvdrones', price: 289.99, mrp: 359.99, rating: 4.4, reviews: 980, prime: false, isNew: false, emoji: '🥽' },
+  { title: 'Walksnail Avatar HD Kit V2 FPV Digital VTX Camera System', asin: 'B0BVQJD19K', category: 'fpvdrones', price: 199.99, mrp: 259.99, rating: 4.6, reviews: 1600, prime: false, isNew: true, emoji: '📡' },
+  // DRONE PARTS
+  { title: 'T-Motor F60 Pro IV 2306 2400KV Brushless FPV Motor', asin: 'B09HMKBWMW', category: 'droneparts', price: 22.99, mrp: 32.99, rating: 4.7, reviews: 1400, prime: false, isNew: false, emoji: '⚙️' },
+  { title: 'HQPROP 5x4.3x3 Tri-Blade Propellers PC Material 4 Pack', asin: 'B07BXNSQVK', category: 'droneparts', price: 5.99, mrp: 9.99, rating: 4.5, reviews: 8700, prime: true, isNew: false, emoji: '🔩' },
+  { title: 'Tattu R-Line 1800mAh 4S 100C LiPo Battery XT60', asin: 'B07B7L4R6M', category: 'droneparts', price: 29.99, mrp: 39.99, rating: 4.6, reviews: 3200, prime: false, isNew: false, emoji: '🔋' },
+  { title: 'Speedybee BL32 4-in-1 ESC 45A 30x30 BLHeli32 4S/6S', asin: 'B0B5KC9B3X', category: 'droneparts', price: 44.99, mrp: 59.99, rating: 4.6, reviews: 2100, prime: true, isNew: false, emoji: '⚡' },
+  { title: 'ISDT Q6 Plus 300W 14A Smart LiPo Battery Charger', asin: 'B07KP9LSSL', category: 'droneparts', price: 39.99, mrp: 55.99, rating: 4.7, reviews: 4600, prime: true, isNew: false, emoji: '🔌' },
+  { title: 'GepRC 5 Inch FPV Drone Frame Mark5 HD 3K Carbon Fiber', asin: 'B09M7NQ56C', category: 'droneparts', price: 34.99, mrp: 49.99, rating: 4.5, reviews: 1200, prime: false, isNew: false, emoji: '🚁' },
+  // FPV PARTS
+  { title: 'Runcam Phoenix 2 FPV Camera 1000TVL 2.1mm Lens NTSC', asin: 'B08P7SXQ4K', category: 'fpvparts', price: 29.99, mrp: 44.99, rating: 4.6, reviews: 2800, prime: false, isNew: false, emoji: '📷' },
+  { title: 'RadioMaster Boxer Max ELRS 4-in-1 Multi Protocol TX', asin: 'B0BVMBJ9Q7', category: 'fpvparts', price: 149.99, mrp: 189.99, rating: 4.8, reviews: 2100, prime: false, isNew: true, emoji: '📻' },
+  { title: 'SpeedyBee F405 Wing App-Enabled Flight Controller FC', asin: 'B0CKM2Z59G', category: 'fpvparts', price: 49.99, mrp: 69.99, rating: 4.7, reviews: 1600, prime: true, isNew: true, emoji: '🎛️' },
+  { title: 'TBS Crossfire Nano RX Receiver Long Range FPV 915MHz', asin: 'B07YPLFTS3', category: 'fpvparts', price: 24.99, mrp: 34.99, rating: 4.5, reviews: 3400, prime: false, isNew: false, emoji: '📡' },
+  { title: 'Lumenier AXII 2 5.8GHz FPV Antenna RHCP SMA Connector', asin: 'B07HJ9VVGS', category: 'fpvparts', price: 14.99, mrp: 22.99, rating: 4.6, reviews: 1900, prime: true, isNew: false, emoji: '📡' },
+];
+
+function loadProducts(filter = 'all') {
+  currentFilter = filter;
+  showSkeleton(8);
+  setTimeout(() => {
+    if (filter === 'all') {
+      allProducts = [...PRODUCT_DATA];
+    } else {
+      allProducts = PRODUCT_DATA.filter(p => p.category === filter);
+    }
+    renderProducts(allProducts);
+    showToast('✅ Deals loaded!');
+  }, 600);
+}
+
+function filterProducts(filter, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  if (filter === 'all') {
+    renderProducts(allProducts);
+  } else {
+    const filtered = allProducts.filter(p => p.category === filter);
+    if (filtered.length === 0) {
+      loadProducts(filter);
+    } else {
+      renderProducts(filtered);
+    }
+  }
+  currentFilter = filter;
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+function startTimer() {
+  const midnight = new Date();
+  midnight.setHours(24, 0, 0, 0);
+  setInterval(() => {
+    const now = new Date();
+    const diff = Math.max(0, midnight - now);
+    const h = Math.floor(diff / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('t-h').textContent = String(h).padStart(2, '0');
+    document.getElementById('t-m').textContent = String(m).padStart(2, '0');
+    document.getElementById('t-s').textContent = String(s).padStart(2, '0');
+  }, 1000);
+}
+
+document.getElementById('lastUpdated').textContent = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+startTimer();
+loadProducts('all');
+</script>
+</body>
+</html>
